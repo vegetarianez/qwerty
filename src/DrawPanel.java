@@ -31,6 +31,7 @@ public class DrawPanel extends JPanel {
 
 
 
+
         this.orbits = new Orbits(sizeOfPlanet);
         red = 40 + (int)(Math.random() * 160);
         green = 40 + (int)(Math.random() * 160);
