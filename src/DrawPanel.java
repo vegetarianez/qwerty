@@ -5,7 +5,6 @@ public class DrawPanel extends JPanel {
 
     private final int PANEL_WIDTH;
     private final int PANEL_HEIGHT;
-    private int ticksFromStart = 0;
 
     
     private Background background;
@@ -13,6 +12,7 @@ public class DrawPanel extends JPanel {
     private Planet planet;
     private Tree tree;
     private Orbits orbits;
+    private int sizeOfPlanet = 450 + (int)(Math.random() * 600);
 
     public DrawPanel(final int width, final int height) {
         this.PANEL_WIDTH = width;
@@ -30,7 +30,7 @@ public class DrawPanel extends JPanel {
 
 
 
-        int sizeOfPlanet = 450 + (int)(Math.random() * 300);
+
         this.orbits = new Orbits(sizeOfPlanet);
         red = 40 + (int)(Math.random() * 160);
         green = 40 + (int)(Math.random() * 160);
@@ -65,7 +65,6 @@ public class DrawPanel extends JPanel {
         //генерация звезд
 
         int countOfStars = 10 + (int) (Math.random() * 20);
-        System.out.println(countOfStars);
         int typeOfStars = (int) (Math.random() * 3);
         if (typeOfStars == 0) {
             for (int i = 0; i < countOfStars; i++) {
@@ -87,11 +86,19 @@ public class DrawPanel extends JPanel {
 
 
         //дерево
+        for (int i = 0; i < 6 + Math.random() * 8; i++) {
+            Color treeSide = new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
 
-        tree.draw(gr, PANEL_WIDTH/2, PANEL_HEIGHT/2);
+
+            Color treeMain = new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
+            tree = new Tree(sizeOfPlanet, treeMain, treeSide);
+            tree.draw(gr, PANEL_WIDTH/2, PANEL_HEIGHT/2);
+        }
 
 
-        orbits.draw(gr, PANEL_WIDTH/2, PANEL_HEIGHT/2);
+        //кривые
+
+        //orbits.draw(gr, PANEL_WIDTH/2, PANEL_HEIGHT/2);
     }
 
 }
